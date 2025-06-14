@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             // Chamar a API do backend
-            const response = await fetch('https://news-verifier-163762341148.southamerica-east1.run.app', {
+            const response = await fetch('https://news-verifier-163762341148.southamerica-east1.run.app/analyze', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ url: url })
