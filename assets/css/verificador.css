@@ -76,27 +76,28 @@
 
 /* Estilos para o relatório Markdown */
 .analysis-report {
-    background-color: white;
+    background-color: #282A36;
+    color: #F8F8F2;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #44475a;
     line-height: 1.7;
 }
 
 .analysis-report h1 {
-    color: #6a0dad;
-    border-bottom: 2px solid #f0f0f0;
+    color: #bd93f9;
+    border-bottom: 2px solid #44475a;
     padding-bottom: 10px;
     margin-top: 0;
 }
 
 .analysis-report h2 {
-    color: #3498db;
+    color: #8be9fd;
     margin-top: 25px;
 }
 
 .analysis-report h3 {
-    color: #2c3e50;
+    color: #b0bec5;
 }
 
 .analysis-report ul, .analysis-report ol {
@@ -109,19 +110,19 @@
 }
 
 .analysis-report strong {
-    color: #e74c3c;
+    color: #ffb86c;
 }
 
 .analysis-report blockquote {
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #8be9fd;
     padding-left: 15px;
-    color: #7f8c8d;
+    color: #e0e0e0;
     margin: 15px 0;
     font-style: italic;
 }
 
 .analysis-report a {
-    color: #2980b9;
+    color: #ff79c6;
     text-decoration: none;
 }
 
@@ -137,18 +138,18 @@
 }
 
 .high-score {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+    background-color: #1e4620;
+    color: #69f0ae;
 }
 
 .medium-score {
-    background-color: #fff8e1;
-    color: #f57f17;
+    background-color: #543f0a;
+    color: #ffd600;
 }
 
 .low-score {
-    background-color: #ffebee;
-    color: #c62828;
+    background-color: #5c1a1a;
+    color: #ff8a80;
 }
 
 /* Botões de ação */
@@ -172,12 +173,12 @@
 }
 
 .btn-download {
-    background-color: #2ecc71;
+    background-color: #3498db;
     color: white;
 }
 
 .btn-share {
-    background-color: #3498db;
+    background-color: #2ecc71;
     color: white;
 }
 
