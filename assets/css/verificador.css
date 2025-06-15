@@ -81,19 +81,21 @@
     padding: 25px;
     border-radius: 8px;
     border: 1px solid #44475a;
-    line-height: 1.7;
+    line-height: 2.0;
 }
 
 .analysis-report h1 {
     color: #bd93f9;
     border-bottom: 2px solid #44475a;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     margin-top: 0;
 }
 
 .analysis-report h2 {
     color: #8be9fd;
     margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
 .analysis-report h3 {
@@ -106,7 +108,7 @@
 }
 
 .analysis-report li {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 
 .analysis-report strong {
