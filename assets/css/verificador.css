@@ -81,7 +81,12 @@
     padding: 25px;
     border-radius: 8px;
     border: 1px solid #44475a;
-    line-height: 2.0;
+    line-height: 1.7;
+}
+
+.analysis-report p {
+    line-height: 1.7;
+    margin-bottom: 15px;
 }
 
 .analysis-report h1 {
