@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
             showError('Por favor, selecione um arquivo para ser analisado.');
             return;
         }
-        if (!context) {
+       /* if (!context) {
             showError('Por favor, descreva o contexto do arquivo para uma melhor análise.');
             return;
-        }
+        }*/
 
         const formData = new FormData();
         formData.append('analysis_type', 'file');
