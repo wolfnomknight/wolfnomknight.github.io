@@ -10,13 +10,74 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeTabSelector = '#analysisTabs .nav-link.active';
     const inputUrl = document.getElementById('input-url');
     const inputText = document.getElementById('input-text');
+
+    // Elementos da área de upload de arquivo
+    const dropZone = document.getElementById('file-drop-zone');
     const inputFile = document.getElementById('input-file');
     const inputFileContext = document.getElementById('input-file-context');
+    const fileNameDisplay = document.getElementById('file-name-display');
 
     const backendUrl = 'https://news-verifier-163762341148.southamerica-east1.run.app/analyze-media'; // <-- ATUALIZE ESTA URL QUANDO FIZER O DEPLOY
 
+    // Aciona o input de arquivo escondido quando o usuário clica na área
+    dropZone.addEventListener('click', () => inputFile.click());
+
+    // Impede o comportamento padrão do navegador
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Adiciona o realce visual quando um arquivo é arrastado sobre a área
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => dropZone.classList.add('drag-over'), false);
+    });
+
+    // Remove o realce visual
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => dropZone.classList.remove('drag-over'), false);
+    });
+
+    // Lida com o arquivo que foi solto na área
+    dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles(files);
+    }, false);
+    
+    // Lida com a seleção de arquivo através da janela de diálogo (após o clique)
+    inputFile.addEventListener('change', () => {
+        handleFiles(inputFile.files);
+    });
+
+    // Lida com arquivos colados (Ctrl+V / Cmd+V)
+    document.addEventListener('paste', (e) => {
+        // Verifica se a aba de arquivo está ativa antes de processar
+        const activeTab = document.querySelector(activeTabSelector);
+        if (activeTab && activeTab.id === 'file-tab') {
+            handleFiles(e.clipboardData.files);
+        }
+    });
+
+    /**
+     * Função central para processar o arquivo selecionado (de qualquer método)
+     * @param {FileList} files A lista de arquivos obtida do evento.
+     */
+    function handleFiles(files) {
+        if (files.length > 0) {
+            // Atribui o arquivo ao nosso input escondido. Esta é a chave!
+            inputFile.files = files;
+            // Mostra o nome do arquivo para o usuário
+            fileNameDisplay.textContent = `Arquivo selecionado: ${files[0].name}`;
+        }
+    }
+
     // =================================================================
-    // 2. EVENTO PRINCIPAL DE CLIQUE
+    // EVENTO PRINCIPAL DE CLIQUE
     // =================================================================
     analyzeBtn.addEventListener('click', async () => {
         const activeTab = document.querySelector(activeTabSelector);

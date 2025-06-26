@@ -23,7 +23,7 @@
   <meta name="keywords" content="IA, inteligência artificial, checagem de fatos, fake news, análise de mídia, Python, LLM, Gemini">
   <meta name="author" content="Sergio 'Wolf' Knapik">
   
-  <title>Verificador de Credibilidade - Wolf AI Tools</title>
+  <title>Verificador de Fake News - Wolf AI Tools</title>
   
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -138,7 +138,17 @@
               Para melhores resultados, descreva o contexto do arquivo (Ex: "Recebi esta imagem no WhatsApp")
             </p>
             <textarea id="input-file-context" placeholder="Descreva o contexto aqui..." class="form-control mb-3" rows="3"></textarea>
-            <input type="file" id="input-file" class="form-control" accept=".mp4,.mpeg,.mov,.avi,.x-flv,.mpg,.webm,.wmv,.3gpp,.csv,.xls,.xlsx,.pptx,.txt,.png,.jpg,.jpeg,.webp,.heif,.doc,.docx,.pdf,.rtf,.dot,.dotx,.hwp,.hwpx,.html">
+            <!-- <input type="file" id="input-file" class="form-control" accept=".mp4,.mpeg,.mov,.avi,.x-flv,.mpg,.webm,.wmv,.3gpp,.csv,.xls,.xlsx,.pptx,.txt,.png,.jpg,.jpeg,.webp,.heif,.doc,.docx,.pdf,.rtf,.dot,.dotx,.hwp,.hwpx,.html"> -->
+			<!-- NOVA ÁREA DE UPLOAD INTERATIVA -->
+			<div id="file-drop-zone">
+				<div id="file-drop-zone-text">
+					Arraste e solte, cole, ou <span>clique aqui</span> para selecionar um arquivo.
+				</div>
+				<!-- O input de arquivo agora fica escondido, controlado pelo JS -->
+				<input type="file" id="input-file" accept=".mp4,.mpeg,.mov,.avi,.x-flv,.mpg,.webm,.wmv,.3gpp,.csv,.xls,.xlsx,.pptx,.txt,.png,.jpg,.jpeg,.webp,.heif,.doc,.docx,.pdf,.rtf,.dot,.dotx,.hwp,.hwpx,.html" hidden>
+			</div>
+			<div id="file-name-display" class="text-center mt-2"></div> <!-- Para mostrar o nome do arquivo selecionado -->
+			</div>
           </div>
         </div>
 
@@ -173,7 +183,7 @@
     <div class="row justify-content-center">
       <div class="card col-md-12 col-lg-10">
         <div class="card-wrapper">
-          <h3 class="card-title mbr-fonts-style mbr-white mt-3 mb-4 display-2"><strong>Verificador de Credibilidade</strong></h3>
+          <h3 class="card-title mbr-fonts-style mbr-white mt-3 mb-4 display-2"><strong>Verificador de Fake News</strong></h3>
           <div class="row card-box align-left">
             <div class="item features-without-image col-12">
               <div class="item-wrapper">

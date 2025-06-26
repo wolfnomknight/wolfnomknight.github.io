@@ -227,3 +227,35 @@
 #analysisTabs {
     border-bottom: 1px solid #44475A;
 }
+
+/* ================================================================= */
+/* ESTILOS PARA A ÁREA DE UPLOAD INTERATIVA (DRAG & DROP)        */
+/* ================================================================= */
+
+#file-drop-zone {
+    border: 2px dashed #44475A;
+    border-radius: 8px;
+    padding: 40px 20px;
+    color: whitesmoke;
+    text-align: center;
+    cursor: pointer;
+    background-color: #383A59; /* Um fundo sutilmente diferente */
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+#file-drop-zone-text span {
+    color: #8BE9FD; /* Cor de destaque para "clique aqui" */
+    text-decoration: underline;
+}
+
+/* Estilo que será aplicado via JS quando um arquivo for arrastado sobre a área */
+#file-drop-zone.drag-over {
+    background-color: #44475A;
+    border-color: #8BE9FD; /* Borda fica azul para indicar "pode soltar" */
+}
+
+#file-name-display {
+    color: #F8F8F2;
+    font-style: italic;
+    font-size: 0.9em;
+}
