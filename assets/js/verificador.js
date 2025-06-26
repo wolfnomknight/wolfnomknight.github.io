@@ -125,38 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.downloadReport = function() {
         const reportElement = document.querySelector('.analysis-report');
         
-        html2canvas(reportElement, { scale: 2 }).then(canvas => {
-            // 1. OBTER DIMENSÕES
+        html2canvas(reportElement).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jspdf.jsPDF({
-                orientation: 'p', // portrait
-                unit: 'mm',       // millimeters
-                format: 'a4'
-            });
-    
-            const pageWidth = pdf.internal.pageSize.getWidth();
-            const pageHeight = pdf.internal.pageSize.getHeight();
+            const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+            const imgWidth = pdf.internal.pageSize.getWidth();
+            const imgHeight = canvas.height * imgWidth / canvas.width;
             
-            // Calcula a altura da imagem no PDF mantendo a proporção
-            const imgHeight = canvas.height * pageWidth / canvas.width;
-    
-            // 2. LÓGICA DE MÚLTIPLAS PÁGINAS
-            let heightLeft = imgHeight; // Altura da imagem que ainda falta ser adicionada ao PDF
-            let yPosition = 0;          // Posição Y inicial na imagem para começar a "fatiar"
-    
-            // Adiciona a primeira página
-            pdf.addImage(imgData, 'PNG', 0, yPosition, pageWidth, imgHeight);
-            heightLeft -= pageHeight;
-    
-            // Enquanto houver conteúdo da imagem para adicionar, cria novas páginas
-            while (heightLeft > 0) {
-                yPosition -= pageHeight; // Move a posição de "fatiamento" para cima na imagem
-                pdf.addPage();
-                pdf.addImage(imgData, 'PNG', 0, yPosition, pageWidth, imgHeight);
-                heightLeft -= pageHeight;
-            }
-            
-            // 3. SALVAR O PDF
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
             pdf.save('analise-de-credibilidade.pdf');
         });
     };
