@@ -19,11 +19,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/wolfdev5.png" type="image/x-icon">
 
-  <meta name="description" content="Wolf AI Tools - Verificador de Credibilidade de Notícias">
-  <meta name="keywords" content="IA, inteligência artificial, sistemas de IA, agentes de IA, desenvolvimento de IA, Python, LLM">
+  <meta name="description" content="Wolf AI Tools - Verificador de Credibilidade de Notícias e Mídia">
+  <meta name="keywords" content="IA, inteligência artificial, checagem de fatos, fake news, análise de mídia, Python, LLM, Gemini">
   <meta name="author" content="Sergio 'Wolf' Knapik">
   
-  <title>Verificador de Credibilidade de Notícias - Wolf AI Tools</title>
+  <title>Verificador de Credibilidade - Wolf AI Tools</title>
   
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   
-  <link rel="stylesheet" href="assets/css/verificador.css">
+  <link rel="stylesheet" href="assets/css/verificadorfakenews.css">
   
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
@@ -43,9 +43,9 @@
 <body>
   
   <section data-bs-version="5.1" class="menu menu2 cid-uNukDzc1Mx" once="menu" id="menu02-7">
-
+  
 	<nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-		<div class="container">
+        <div class="container">
 			<div class="navbar-brand">
 				<span class="navbar-logo">
 					<a href="index.html">
@@ -79,9 +79,9 @@
   <div class="container">
     <div class="row">
       <div class="content-wrap col-12 col-md-8">
-        <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1"><strong>Verificador de Credibilidade</strong></h1>
+        <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1"><strong>Verificador<br>de Fake News</strong></h1>
         <p class="mbr-fonts-style mbr-text mb-4 display-7">
-          Análise de artigos jornalísticos com tecnologia Google Cloud AI.</p>
+          Análise de links, textos, imagens e vídeos com tecnologia Google Cloud AI.</p>
       </div>
     </div>
   </div>
@@ -93,25 +93,64 @@
       <div class="col-12 content-head">
         <div class="mbr-section-head mb-5">
           <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
-            <strong>Cole o link da notícia no campo abaixo</strong>
-            <p class="mbr-fonts-style mbr-text mb-4 display-7">
-              O sistema pode demorar alguns poucos minutos para completar a análise.<br></p>
+            <strong>Escolha o tipo de conteúdo para analisar</strong>
           </h3>
+          <p class="mbr-fonts-style mbr-text align-center mb-4 display-7">
+            O sistema pode demorar alguns minutos para completar a análise, especialmente para vídeos.
+          </p>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-lg-8 mx-auto mbr-form">
-        <!-- Formulário simplificado -->
-        <div class="input-section">
-          <input type="url" id="news-url" placeholder="https://exemplo.com/noticia" class="form-control" required>
-          <button id="analyze-btn" class="btn btn-white-outline display-7">Analisar com IA</button>
+        
+        <!-- Navegação das Abas -->
+        <ul class="nav nav-tabs justify-content-center mb-4" id="analysisTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="link-tab" data-bs-toggle="tab" data-bs-target="#link-pane" type="button" role="tab" aria-controls="link-pane" aria-selected="true">Analisar Link</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="text-tab" data-bs-toggle="tab" data-bs-target="#text-pane" type="button" role="tab" aria-controls="text-pane" aria-selected="false">Analisar Texto</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="file-tab" data-bs-toggle="tab" data-bs-target="#file-pane" type="button" role="tab" aria-controls="file-pane" aria-selected="false">Analisar Arquivo</button>
+          </li>
+        </ul>
+
+        <!-- Conteúdo das Abas -->
+        <div class="tab-content" id="analysisTabsContent">
+          
+          <!-- Aba 1: Análise de Link -->
+          <div class="tab-pane fade show active" id="link-pane" role="tabpanel" aria-labelledby="link-tab">
+            <div class="input-section">
+              <input type="url" id="input-url" placeholder="https://exemplo.com/noticia" class="form-control" required>
+            </div>
+          </div>
+          
+          <!-- Aba 2: Análise de Texto -->
+          <div class="tab-pane fade" id="text-pane" role="tabpanel" aria-labelledby="text-tab">
+            <textarea id="input-text" placeholder="Cole aqui o texto que você recebeu..." class="form-control" rows="8"></textarea>
+          </div>
+
+          <!-- Aba 3: Análise de Arquivo -->
+          <div class="tab-pane fade" id="file-pane" role="tabpanel" aria-labelledby="file-tab">
+            <p class="mbr-fonts-style mbr-text mb-2 display-7 text-center">
+              Para melhores resultados, descreva o contexto do arquivo (Ex: "Recebi esta imagem no WhatsApp")
+            </p>
+            <textarea id="input-file-context" placeholder="Descreva o contexto aqui..." class="form-control mb-3" rows="3"></textarea>
+            <input type="file" id="input-file" class="form-control" accept=".mp4,.mpeg,.mov,.avi,.x-flv,.mpg,.webm,.wmv,.3gpp,.csv,.xls,.xlsx,.pptx,.txt,.png,.jpg,.jpeg,.webp,.heif,.doc,.docx,.pdf,.rtf,.dot,.dotx,.hwp,.hwpx,.html">
+          </div>
+        </div>
+
+        <!-- Botão de Análise (Comum a todas as abas) -->
+        <div class="text-center mt-4">
+            <button id="analyze-btn" class="btn btn-white-outline display-7">Analisar com IA</button>
         </div>
 
         <!-- Loader -->
-        <div id="loader" style="display: none;">
+        <div id="loader" style="display: none;" class="text-center mt-4">
           <div class="spinner"></div>
-          <p>Analisando artigo, aguarde...</p>
+          <p>Analisando, aguarde...</p>
         </div>
 
         <!-- Resultados -->
@@ -127,6 +166,8 @@
   </div>
 </section>
 
+<!-- ... (O resto do seu HTML, como o rodapé, continua o mesmo) ... -->
+
 <section data-bs-version="5.1" class="article07 cid-uNEgwQQblr" id="article07-d">
   <div class="container">
     <div class="row justify-content-center">
@@ -139,7 +180,7 @@
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5">
                   <strong>Este aplicativo é grátis?</strong></h4>
                 <p class="mbr-text mbr-fonts-style display-7">
-                  Sim! A verificação de notícias nesta página é grátis.<br><br>No entanto, o serviço em si tem um custo, principalmente pelo uso de IA e do tempo de trabalho do desenvolvedor. Para garantir que este serviço continue grátis, considere fazer uma doação para o pix: wolfnompix@gmail.com</p>
+                  Sim! A verificação de fake news nesta página é grátis.<br><br>No entanto, o serviço em si tem um custo, principalmente pelo uso de IA e do tempo de trabalho do desenvolvedor. Para garantir que este serviço continue grátis, considere fazer uma doação para o pix: wolfnompix@gmail.com</p>
               </div>
             </div>
             <div class="item features-without-image col-12">
@@ -147,19 +188,8 @@
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5">
                   <strong>Como funciona?</strong></h4>
                 <p class="mbr-text mbr-fonts-style display-7">
-                  Este aplicativo é composto por quatro agentes de IA que trabalham em conjunto para avaliar a notícia, além de pesquisar mais fontes. Estes agentes são baseados no Google Gemini.</p>
+                  Este aplicativo é composto por quatro agentes de IA que trabalham em conjunto para avaliar a mídia fornecida, pesquisando e avaliando as informações. Estes agentes são baseados no Google Gemini.</p>
               </div>
-              <div class="item features-without-image col-12">
-                <div class="item-wrapper">
-                  <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5">
-                    <strong>Problemas conhecidos e próximas melhorias</strong></h4>
-                  <p class="mbr-text mbr-fonts-style display-7">
-                    Os resultados de análises algumas vezes são gerados sem links;<br>
-                    O botão "Baixar Relatório" não está salvando o relatório completo;<br>
-                    Pretendo implementar um "modo claro" ao resultado da análise, para os usuários que preferirem.
-                  </p>
-                </div>
-            </div>
           </div>
         </div>
       </div>
@@ -171,7 +201,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-6 center mt-2 mb-3">
-        <p class="mbr-fonts-style copyright mb-0 display-7">Wolf AI Tools - Desenvolvimento de sistemas e agentes de IA sob medida com LLMs&nbsp;<br><br>© Copyright 2025 Sergio "Wolf" Knapik<br>Todos os direitos reservados.</p>
+        <p class="mbr-fonts-style copyright mb-0 display-7">Wolf AI Tools - Desenvolvimento de sistemas e agentes de IA sob medida com LLMs <br><br>© Copyright 2025 Sergio "Wolf" Knapik<br>Todos os direitos reservados.</p>
       </div>
     </div>
   </div>
@@ -185,7 +215,7 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="assets/js/verificador.js"></script>
+<script src="assets/js/verificadorfk.js"></script>
 
 <!-- Script para remover elementos indesejados do Mobirise -->
 <script>
