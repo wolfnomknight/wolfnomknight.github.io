@@ -41,8 +41,9 @@ function handleLogout() {
 // Função para atualizar a UI com base no estado de login
 function updateLoginUI(isLoggedIn, userData) {
     const userProfileElement = document.getElementById('user-profile-display');
-    const loginContainer = document.getElementById('google-login-button-container');
-    // const loginButtonElement = document.getElementById('google-login-button-container');
+    // const loginContainer = document.getElementById('google-login-button-container');
+    // const userProfileContainer = document.getElementById('user-profile-display');
+    const loginButtonElement = document.getElementById('google-login-button-container');
 
     if (isLoggedIn && userProfileElement) {
         // Mostra o perfil do usuário e o botão de logout
