@@ -40,26 +40,39 @@ function handleLogout() {
 
 // Função para atualizar a UI com base no estado de login
 function updateLoginUI(isLoggedIn, userData) {
-    const userProfileElement = document.getElementById('user-profile-display');
-    // const loginContainer = document.getElementById('google-login-button-container');
-    // const userProfileContainer = document.getElementById('user-profile-display');
-    const loginButtonElement = document.getElementById('google-login-button-container');
+    // const userProfileElement = document.getElementById('user-profile-display');
+    const loginContainer = document.getElementById('google-login-button-container');
+    const userProfileContainer = document.getElementById('user-profile-display');
+    // const loginButtonElement = document.getElementById('google-login-button-container');
 
-    if (isLoggedIn && userProfileElement) {
+    if (isLoggedIn && userData) {
+        // Esconder o botão de login
+        if (loginContainer) {
+            loginContainer.style.display = 'none';
+        }
+
         // Mostra o perfil do usuário e o botão de logout
-        const firstName = userData.displayName.split(' ')[0];
-        userProfileElement.innerHTML = `
-            <span class="user-greeting text-black text-primary display-4">Olá, ${firstName}</span>
-            <button id="logout-btn" class="btn btn-sm btn-dark rounded-pill">Sair</button>
-        `;
-        // Adiciona o evento de clique ao botão de logout recém-criado
-        document.getElementById('logout-btn').addEventListener('click', handleLogout);
-        
-        if (loginButtonElement) loginButtonElement.style.display = 'none';
+        if (userProfileContainer) {
+            const firstName = userData.displayName.split(' ')[0];
+            userProfileContainer.innerHTML = `
+                <span class="user-greeting text-black text-primary display-4">Olá, ${firstName}</span>
+                <button id="logout-btn" class="btn btn-sm btn-dark rounded-pill">Sair</button>
+                `;
+            // Adiciona o evento de clique ao botão de logout recém-criado
+            document.getElementById('logout-btn').addEventListener('click', handleLogout);
+            userProfileContainer.style.display = 'flex';
+        }
+                
     } else {
         // Mostra o botão de login do Google
-        if (userProfileElement) userProfileElement.innerHTML = '';
-        if (loginButtonElement) loginButtonElement.style.display = 'block';
+        if (loginContainer) {
+            loginContainer.style.display = 'block';
+        }
+        // Esconde o container de info do usuário
+        if (userProfileContainer) {
+            userProfileContainer.style.display = 'none';
+            userProfileContainer.innerHTML = '';
+        }
     }
 }
 
