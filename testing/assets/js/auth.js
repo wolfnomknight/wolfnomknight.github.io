@@ -6,7 +6,7 @@ function handleCredentialResponse(response) {
     const idToken = response.credential;
     
     // 1. Enviar o token para o backend para verificação e criação/login do usuário
-    fetch('https://seu-backend.com/auth/google', { // <-- Endpoint que vamos criar depois
+    fetch('https://news-verifier-163762341148.southamerica-east1.run.app/auth/google', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
