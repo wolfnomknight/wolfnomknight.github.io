@@ -307,7 +307,7 @@ iframe {
   font-weight: 600;
   border-width: 1px;
   font-style: normal;
-  margin: 0.6rem 0.6rem;
+  /* margin: 0.6rem 0.6rem;*/
   white-space: normal;
   transition: all 0.2s ease-in-out;
   display: inline-flex;
@@ -965,9 +965,9 @@ blockquote {
 }
 .user-greeting {
   /* Garante que a saudação tenha a mesma cor e tamanho dos outros links do menu */
-  color: var(--primary-text-color, #B0BEC5); /* Ajuste a cor se necessário */
+  color: var(--primary-text-color, #232323); /* Ajuste a cor se necessário */
   font-family: 'Inter Tight', sans-serif; /* Garante a mesma fonte */
   font-size: 1rem; /* Ajuste o tamanho para bater com os outros itens */
-  margin-right: 15px; /* Adiciona um espaço antes do botão de sair */
+  margin-right: 7px; /* Adiciona um espaço antes do botão de sair */
   vertical-align: middle; /* Alinha verticalmente com o botão */
 }
