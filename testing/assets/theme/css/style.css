@@ -963,3 +963,11 @@ blockquote {
 	top: 0;
 	left: -2400px;
 }
+.user-greeting {
+  /* Garante que a saudação tenha a mesma cor e tamanho dos outros links do menu */
+  color: var(--primary-text-color, #B0BEC5); /* Ajuste a cor se necessário */
+  font-family: 'Inter Tight', sans-serif; /* Garante a mesma fonte */
+  font-size: 1rem; /* Ajuste o tamanho para bater com os outros itens */
+  margin-right: 15px; /* Adiciona um espaço antes do botão de sair */
+  vertical-align: middle; /* Alinha verticalmente com o botão */
+}
