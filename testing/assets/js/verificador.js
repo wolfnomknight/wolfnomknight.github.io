@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Evento de clique no botão
     analyzeBtn.addEventListener('click', async () => {
+        const sessionToken = localStorage.getItem('sessionToken');
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+        if (sessionToken) {
+            headers['Authorization'] = `Bearer ${sessionToken}`;
+        }
+
         const url = urlInput.value.trim();
         
         // Validação básica da URL
@@ -23,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Chamar a API do backend
             const response = await fetch('https://news-verifier-163762341148.southamerica-east1.run.app/analyze', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: headers,
                 body: JSON.stringify({ url: url })
             });
             
