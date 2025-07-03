@@ -49,7 +49,7 @@
 			<div class="navbar-brand">
 				<span class="navbar-logo">
 					<a href="index.html">
-						<img src="assets/images/wolfdev5.png" alt="Wolf AI Tools" style="height: 3rem;">
+						<img src="assets/images/wolfdev5.png" alt="Wolf AI Tools logo" style="height: 3rem;">
 					</a>
 				</span>
 				<span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4" href="index.html#header19-0">Wolf AI Tools</a></span>
@@ -69,6 +69,26 @@
           <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#article05-6">Sobre</a></li>
           <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#contacts01-5">Contato</a></li>
           <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="politica-privacidade.html">Privacidade</a></li>
+		  
+		  		  <div class="navbar-nav nav-item ms-auto">
+		  <!-- O botão de login do Google será renderizado aqui -->
+		  <div id="google-login-button-container">
+				<div id="g_id_onload"
+					data-client_id="163762341148-k4i9flepn99hnvt6c6t1ufno5movu4b5.apps.googleusercontent.com"
+					data-callback="handleCredentialResponse"
+					data-auto_prompt="false"> 
+				</div>
+				<div class="g_id_signin" 
+					data-type="standard"
+					data-theme="filled_black"
+					data-text="continue_with"
+					data-shape="pill"
+					data-logo_alignment="left"></div>
+				</div>
+
+		  <!-- O perfil do usuário logado aparecerá aqui -->
+		  <div id="user-profile-display" style="display: flex;flex-direction: row;align-items: center;"></div>
+		  
         </ul>
 			</div>
 		</div>
@@ -186,8 +206,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="assets/js/verificador.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="assets/js/auth.js"></script>
 
-<!-- Script para remover elementos indesejados do Mobirise -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Remover elementos do Mobirise

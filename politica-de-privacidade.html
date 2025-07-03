@@ -49,7 +49,7 @@
 			<div class="navbar-brand">
 				<span class="navbar-logo">
 					<a href="index.html">
-						<img src="assets/images/wolfdev5.png" alt="Mobirise Website Builder" style="height: 3rem;">
+						<img src="assets/images/wolfdev5.png" alt="Wolf AI Tools logo" style="height: 3rem;">
 					</a>
 				</span>
 				<span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4" href="index.html#header19-0">Wolf AI Tools</a></span>
@@ -67,7 +67,28 @@
 					
 					<li class="nav-item">
 						<a class="nav-link link text-black text-primary display-4" href="index.html#contacts01-5">Contato</a>
-					</li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#contacts01-5">Privacidade</a></li></ul>
+					</li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#contacts01-5">Privacidade</a></li>
+					
+							  <div class="navbar-nav nav-item ms-auto">
+		  <!-- O botão de login do Google será renderizado aqui -->
+		  <div id="google-login-button-container">
+				<div id="g_id_onload"
+					data-client_id="163762341148-k4i9flepn99hnvt6c6t1ufno5movu4b5.apps.googleusercontent.com"
+					data-callback="handleCredentialResponse"
+					data-auto_prompt="false"> 
+				</div>
+				<div class="g_id_signin" 
+					data-type="standard"
+					data-theme="filled_black"
+					data-text="continue_with"
+					data-shape="pill"
+					data-logo_alignment="left"></div>
+				</div>
+
+		  <!-- O perfil do usuário logado aparecerá aqui -->
+		  <div id="user-profile-display" style="display: flex;flex-direction: row;align-items: center;"></div>
+					
+					</ul>
 				
 				
 			</div>
@@ -185,11 +206,22 @@
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/parallax/jarallax.js"></script>
 <script src="assets/smoothscroll/smooth-scroll.js"></script>
-<script src="assets/ytplayer/index.js"></script>
 <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-<script src="assets/vimeoplayer/player.js"></script>
 <script src="assets/theme/js/script.js"></script>
-  
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="assets/js/auth.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Remover elementos do Mobirise
+    const mobiriseSections = document.querySelectorAll('section[style*="height: 0rem"]');
+    mobiriseSections.forEach(section => section.remove());
+    
+    // Remover link do builder
+    const builderLink = document.querySelector('a[href="https://mobirise.com/builder/ai-website-maker.html"]');
+    if (builderLink) builderLink.remove();
+  });
+</script>  
   
 </body>
 </html>

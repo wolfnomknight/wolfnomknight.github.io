@@ -2,20 +2,23 @@
 
 // Função de callback global para o login do Google
 function handleCredentialResponse(response) {
-    console.log("Token recebido:", response.credential);
     const idToken = response.credential;
+    console.log("Token recebido:", idToken);
     
     // 1. Enviar o token para o backend para verificação e criação/login do usuário
-    fetch('https://seu-backend.com/auth/google', { // <-- Endpoint que vamos criar depois
+    fetch('https://news-verifier-163762341148.southamerica-east1.run.app/auth/google', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ token: idToken }),
     })
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) throw new Error('Falha na resposta do backend durante a autenticação.');
+        return res.json();
+    })
     .then(data => {
-        if (data.sessionToken) {
+        if (data.sessionToken && data.user) {
             // 2. Salvar o "token de sessão" do nosso backend no localStorage
             // Este token será usado para autenticar as chamadas às nossas ferramentas
             localStorage.setItem('sessionToken', data.sessionToken);
@@ -27,6 +30,7 @@ function handleCredentialResponse(response) {
         }
     })
     .catch(error => console.error('Erro ao verificar token no backend:', error));
+    updateLoginUI(false, null);
 }
 
 // Função para fazer logout
@@ -40,34 +44,71 @@ function handleLogout() {
 
 // Função para atualizar a UI com base no estado de login
 function updateLoginUI(isLoggedIn, userData) {
-    const userProfileElement = document.getElementById('user-profile-display');
-    const loginButtonElement = document.getElementById('google-login-button-container');
+    // const userProfileElement = document.getElementById('user-profile-display');
+    const loginContainer = document.getElementById('google-login-button-container');
+    const userProfileContainer = document.getElementById('user-profile-display');
+    // const loginButtonElement = document.getElementById('google-login-button-container');
 
-    if (isLoggedIn && userProfileElement) {
+    if (isLoggedIn && userData) {
+        // Esconder o botão de login
+        if (loginContainer) {
+            loginContainer.style.display = 'none';
+        }
+
         // Mostra o perfil do usuário e o botão de logout
-        userProfileElement.innerHTML = `
-            <span class="user-greeting">Olá, ${userData.displayName}</span>
-            <button id="logout-btn" class="btn btn-sm btn-outline-secondary">Sair</button>
-        `;
-        // Adiciona o evento de clique ao botão de logout recém-criado
-        document.getElementById('logout-btn').addEventListener('click', handleLogout);
-        
-        if (loginButtonElement) loginButtonElement.style.display = 'none';
+        if (userProfileContainer) {
+            const firstName = userData.displayName.split(' ')[0];
+            userProfileContainer.innerHTML = `
+                <span class="user-greeting text-black text-primary display-4">Olá, ${firstName}</span>
+                <button id="logout-btn" class="btn btn-sm btn-dark rounded-pill">Sair</button>
+                `;
+            // Adiciona o evento de clique ao botão de logout recém-criado
+            document.getElementById('logout-btn').addEventListener('click', handleLogout);
+            userProfileContainer.style.display = 'flex';
+        }
+                
     } else {
         // Mostra o botão de login do Google
-        if (userProfileElement) userProfileElement.innerHTML = '';
-        if (loginButtonElement) loginButtonElement.style.display = 'block';
+        if (loginContainer) {
+            loginContainer.style.display = 'block';
+        }
+        // Esconde o container de info do usuário
+        if (userProfileContainer) {
+            userProfileContainer.style.display = 'none';
+            userProfileContainer.innerHTML = '';
+        }
     }
 }
 
 // Verifica o estado de login quando a página carrega
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('sessionToken');
-    if (token) {
-        // Se temos um token, poderíamos verificar sua validade com o backend
-        // Por agora, vamos assumir que é válido e atualizar a UI.
-        // No futuro, você faria uma chamada a um endpoint /me para pegar os dados do usuário.
-        // Por simplicidade, vamos pular essa parte agora e focar no fluxo de login.
-        // updateLoginUI(true, { displayName: "Usuário" }); // Exemplo simplificado
+document.addEventListener('DOMContentLoaded', async () => {
+    const sessionToken = localStorage.getItem('sessionToken');
+    if (sessionToken) {
+        console.log("Token encontrado. Usuário previamente logado. Verificando...");
+
+        try {
+            const response = await fetch('https://news-verifier-163762341148.southamerica-east1.run.app/auth/me', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log("Sessão válida. Olá, ", data.user.displayName);
+                    updateLoginUI(true, data.user);
+                } else {
+                    console.log("Sessão inválida ou expirada.");
+                    localStorage.removeItem('sessionToken');
+                    updateLoginUI(false, null);
+                }
+        } catch (error) {
+            console.error("Erro ao verificar a sessão: ", error);
+            updateLoginUI(false, null);
+        }
+
+    } else {
+        console.log("Nenhum token encontrado. Usuário deslogado.");
+        updateLoginUI(false, null);
     }
 });
