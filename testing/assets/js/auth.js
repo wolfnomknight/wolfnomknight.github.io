@@ -2,8 +2,8 @@
 
 // Função de callback global para o login do Google
 function handleCredentialResponse(response) {
-    console.log("Token recebido:", response.credential);
     const idToken = response.credential;
+    console.log("Token recebido:", idToken);
     
     // 1. Enviar o token para o backend para verificação e criação/login do usuário
     fetch('https://news-verifier-163762341148.southamerica-east1.run.app/auth/google', {
@@ -13,9 +13,12 @@ function handleCredentialResponse(response) {
         },
         body: JSON.stringify({ token: idToken }),
     })
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) throw new Error('Falha na resposta do backend durante a autenticação.');
+        return res.json();
+    })
     .then(data => {
-        if (data.sessionToken) {
+        if (data.sessionToken && data.user) {
             // 2. Salvar o "token de sessão" do nosso backend no localStorage
             // Este token será usado para autenticar as chamadas às nossas ferramentas
             localStorage.setItem('sessionToken', data.sessionToken);
@@ -27,6 +30,7 @@ function handleCredentialResponse(response) {
         }
     })
     .catch(error => console.error('Erro ao verificar token no backend:', error));
+    updateLoginUI(false, null);
 }
 
 // Função para fazer logout
@@ -77,13 +81,34 @@ function updateLoginUI(isLoggedIn, userData) {
 }
 
 // Verifica o estado de login quando a página carrega
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('sessionToken');
-    if (token) {
-        // Se temos um token, poderíamos verificar sua validade com o backend
-        // Por agora, vamos assumir que é válido e atualizar a UI.
-        // No futuro, você faria uma chamada a um endpoint /me para pegar os dados do usuário.
-        // Por simplicidade, vamos pular essa parte agora e focar no fluxo de login.
-        // updateLoginUI(true, { displayName: "Usuário" }); // Exemplo simplificado
+document.addEventListener('DOMContentLoaded', async () => {
+    const sessionToken = localStorage.getItem('sessionToken');
+    if (sessionToken) {
+        console.log("Token encontrado. Usuário previamente logado. Verificando...");
+
+        try {
+            const response = await fetch('https://news-verifier-163762341148.southamerica-east1.run.app/auth/me', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log("Sessão válida. Olá, ", data.user.displayName);
+                    updateLoginUI(true, data.user);
+                } else {
+                    console.log("Sessão inválida ou expirada.");
+                    localStorage.removeItem('sessionToken');
+                    updateLoginUI(false, null);
+                }
+        } catch (error) {
+            console.error("Erro ao verificar a sessão: ", error);
+            updateLoginUI(false, null);
+        }
+
+    } else {
+        console.log("Nenhum token encontrado. Usuário deslogado.");
+        updateLoginUI(false, null);
     }
 });
