@@ -185,11 +185,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // for (let [key, value] of formData.entries()) {
         //     console.log(key, value);
         // }
+        const sessionToken = localStorage.getItem('sessionToken');
+        const headers = {};
+        if (sessionToken) {
+            headers['Authorization'] = `Bearer ${sessionToken}`;
+        } else {
+            showError("Erro de autenticação: Por favor, faça login novamente.");
+            throw new Error("Token de sessão não encontrado.");
+        }
 
         const response = await fetch(backendUrl, {
             method: 'POST',
-            // IMPORTANTE: Ao usar FormData, NÃO defina o header 'Content-Type'.
-            // O navegador faz isso automaticamente, incluindo o 'boundary' necessário.
+            headers: headers,
+            // IMPORTANTE: Note que NÃO estamos definindo 'Content-Type'.
+            // O navegador ainda cuidará disso automaticamente por causa do FormData.
             body: formData
         });
 
