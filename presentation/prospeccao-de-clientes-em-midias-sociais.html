@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospecção Inteligente para Negócios Locais</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: 
+            radial-gradient(circle at 25% 25%, rgba(139, 69, 193, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+            linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        
+			background-attachment: fixed;
+        }
+
+		.logo {
+			filter: invert(1)
+		}
+
+        .section-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem;
+        }
+        
+        .tech-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            pointer-events: none;
+        }
+
+        .animated-bg-pulse { animation: pulse-bg 4s ease-in-out infinite alternate; }
+        @keyframes pulse-bg { 0% { opacity: 0.8; } 100% { opacity: 1; } }
+        @keyframes pulse-glow-animation { 0% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); } 50% { box-shadow: 0 0 30px rgba(34, 197, 94, 0.6); } 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); } }
+        
+        .title-gradient { background: linear-gradient(135deg, #8b45c1, #3b82f6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .glow-effect { box-shadow: 0 0 30px rgba(139, 69, 193, 0.3); }
+        .pulse-glow { animation: pulse-glow-animation 2s infinite; }
+
+        .pain-point-card { background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 101, 101, 0.05)); border: 1px solid rgba(239, 68, 68, 0.3); transition: transform 0.3s ease; }
+        .pain-point-card:hover { transform: translateY(-5px); }
+        
+        .strategy-card { background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); transition: transform 0.3s ease; }
+        .strategy-card:hover { transform: translateY(-5px); }
+        
+        .proposal-card { background: linear-gradient(135deg, rgba(139, 69, 193, 0.15), rgba(168, 85, 247, 0.1)); border: 2px solid rgba(139, 69, 193, 0.4); }
+        .module-card { background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.1)); border: 2px solid rgba(59, 130, 246, 0.4); }
+        .message-card { background: linear-gradient(135deg, rgba(139, 69, 193, 0.15), rgba(168, 85, 247, 0.1)); border: 2px solid rgba(139, 69, 193, 0.4); }
+        .security-card { background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.1)); border: 2px solid rgba(34, 197, 94, 0.4); }
+        
+        .price-highlight { background: linear-gradient(135deg, #22c55e, #16a34a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .thank-you-card { background: linear-gradient(135deg, rgba(139, 69, 193, 0.15), rgba(168, 85, 247, 0.1)); border: 2px solid rgba(139, 69, 193, 0.4); }
+        .contact-item { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); transition: transform 0.3s ease; }
+        .contact-item:hover { transform: translateY(-5px); }
+
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- HERO SECTION -->
+    <section class="section-container">
+        <div class="z-10 text-center max-w-5xl px-8">
+            <div class="mb-8">
+                <img src="https://wolf.dev.br/assets/images/wolfdev5.png" alt="Wolf Dev Logo" class="w-24 h-24 mx-auto glow-effect rounded-full logo">
+            </div>
+            <h1 class="text-6xl md:text-7xl font-bold mb-6 title-gradient leading-tight">Prospecção Inteligente<br>em Redes Sociais</h1>
+            <p class="text-2xl md:text-3xl text-gray-300 mb-8 leading-relaxed">Uma ferramenta de IA para encontrar e conectar-se com seus futuros clientes locais, de forma segura e personalizada.</p>
+            <div class="flex items-center justify-center space-x-4 text-xl text-gray-400">
+                <i class="fas fa-robot text-purple-400"></i>
+                <span>Apresentado por Wolf AI Tools</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE PROBLEM SECTION -->
+    <section class="section-container">
+        <div class="tech-pattern"></div>
+        <div class="z-10 w-full max-w-7xl px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-5xl font-bold text-white mb-4">A Prospecção Manual é <span class="text-red-400">Difícil</span></h2>
+
+                 <p class="text-xl text-gray-300 mt-4 max-w-3xl mx-auto">Encontrar clientes qualificados perto de você exige horas de trabalho,<br>com resultados muitas vezes frustrantes.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="pain-point-card p-8 rounded-xl text-center"><div class="mb-6"><i class="fas fa-hourglass-half text-red-400 text-5xl"></i></div><h3 class="text-2xl font-bold text-white mb-4">Lenta e Cansativa</h3><p class="text-gray-300 text-lg leading-relaxed">Horas de busca manual por perfis, hashtags e localizações.</p></div>
+                <div class="pain-point-card p-8 rounded-xl text-center"><div class="mb-6"><i class="fas fa-bullseye text-red-400 text-5xl"></i></div><h3 class="text-2xl font-bold text-white mb-4">Pouco Eficaz</h3><p class="text-gray-300 text-lg leading-relaxed">É difícil saber quem realmente tem interesse e está geograficamente próximo.</p></div>
+                <div class="pain-point-card p-8 rounded-xl text-center"><div class="mb-6"><i class="fas fa-robot text-red-400 text-5xl"></i></div><h3 class="text-2xl font-bold text-white mb-4">Parece Genérico</h3><p class="text-gray-300 text-lg leading-relaxed">Criar uma mensagem personalizada para cada pessoa é um desafio, resultando em contatos impessoais.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE SOLUTION SECTION -->
+    <section class="section-container">
+        <div class="tech-pattern"></div>
+        <div class="z-10 w-full max-w-7xl px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-5xl font-bold text-white mb-4">A Solução: <span class="text-green-400">Prospecção Inteligente</span></h2>
+
+                <p class="text-xl text-gray-300 mt-4 max-w-3xl mx-auto">Nossa ferramenta usa IA para automatizar o trabalho pesado,<br>deixando a parte estratégica e humana com você.<br>Focamos em três pilares:</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="strategy-card p-8 rounded-xl text-center"><div class="mb-4"><i class="fas fa-map-marker-alt text-green-400 text-5xl"></i></div><h3 class="text-2xl font-bold text-white mb-4">Precisão Geográfica</h3><p class="text-gray-300 text-lg leading-relaxed">Encontramos pessoas que frequentam lugares dentro de um raio de quilômetros do seu negócio.</p></div>
+                <div class="strategy-card p-8 rounded-xl text-center"><div class="mb-4"><i class="fas fa-heart text-green-400 text-5xl"></i></div><h3 class="text-2xl font-bold text-white mb-4">Análise de Interesses</h3><p class="text-gray-300 text-lg leading-relaxed">Identificamos quem posta sobre crossfit, vida saudável, musculação e outros tópicos relevantes.</p></div>
+                <div class="strategy-card p-8 rounded-xl text-center"><div class="mb-4"><i class="fas fa-comment-dots text-green-400 text-5xl"></i></div><h3 class="text-2xl font-bold text-white mb-4">Comunicação Pessoal</h3><p class="text-gray-300 text-lg leading-relaxed">A IA cria uma mensagem única para cada pessoa, baseada nos seus posts e perfil.</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- MODULE 1: DISCOVERY -->
+    <section class="section-container">
+        <div class="tech-pattern"></div>
+        <div class="z-10 w-full max-w-7xl px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-5xl font-bold text-white mb-4"><span class="text-blue-400">Módulo 1:</span> Descoberta Inteligente de Prospects</h2>
+
+            </div>
+            <div class="module-card p-8 rounded-xl">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6"><i class="fas fa-search-location text-blue-400 mr-3"></i>O que a Ferramenta Faz:</h3>
+                        <p class="text-gray-300 text-lg">Você define o raio de busca e os interesses. Nossa IA varre o Instagram e encontra perfis que se encaixam perfeitamente nesses critérios, eliminando contatos já realizados.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6"><i class="fas fa-clipboard-list text-green-400 mr-3"></i>O que Você Recebe:</h3>
+                        <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg">
+                            <h4 class="text-green-400 font-semibold mb-4">Uma Lista Diária de Leads Qualificados</h4>
+                            <p class="text-gray-300">Todos os dias, uma nova lista de potenciais clientes, prontos para serem contatados, sem que você precise gastar horas pesquisando.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 2: MESSAGING -->
+    <section class="section-container">
+        <div class="tech-pattern"></div>
+        <div class="z-10 w-full max-w-7xl px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-5xl font-bold text-white mb-4"><span class="text-purple-400">Módulo 2:</span> Criação de Mensagens Autênticas</h2>
+
+            </div>
+             <div class="message-card p-8 rounded-xl">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6"><i class="fas fa-magic text-purple-400 mr-3"></i>O que a Ferramenta Faz:</h3>
+                        <p class="text-gray-300 text-lg">Para cada prospect encontrado, nossa IA analisa seus posts recentes e cria um rascunho de mensagem único e pessoal, que se conecta com o conteúdo daquela pessoa.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6"><i class="fas fa-pen-alt text-yellow-400 mr-3"></i>O que Você Recebe:</h3>
+                        <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg">
+                            <h4 class="text-yellow-400 font-semibold mb-4">Rascunhos de Mensagens que Convertem</h4>
+                            <p class="text-gray-300">"Oi, [Nome]! Vi seu post sobre [tópico do post], muito foco! Nós aqui do [Seu Box] podemos te ajudar a melhorar ainda mais. Que tal uma aula experimental grátis?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECURITY SECTION -->
+    <section class="section-container">
+        <div class="tech-pattern"></div>
+        <div class="z-10 w-full max-w-7xl px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-5xl font-bold text-white mb-4">Segurança e Controle Total: <span class="text-green-400">Sua Conta Protegida</span></h2>
+
+                <p class="text-xl text-gray-300 mt-4 max-w-3xl mx-auto">Nossa prioridade máxima é a segurança da sua conta. Por isso, seguimos estritamente os Termos de Serviço das Redes Sociais.</p>
+            </div>
+            <div class="security-card p-10 rounded-xl">
+                <div class="text-center mb-8">
+                    <i class="fas fa-shield-alt text-green-400 text-6xl mb-4"></i>
+                    <h3 class="text-3xl font-bold text-white">A Ferramenta NÃO Envia Mensagens Automaticamente</h3>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 items-center text-center">
+                    <div><i class="fas fa-copy text-blue-400 text-4xl mb-2"></i><h4 class="text-xl font-bold text-white">1. Copiar</h4><p class="text-gray-300">Você aprova e copia a mensagem gerada pela IA com um clique.</p></div>
+
+                    <div><i class="fab fa-instagram text-purple-400 text-4xl mb-2"></i><h4 class="text-xl font-bold text-white">2. Abrir</h4><p class="text-gray-300">A ferramenta te leva diretamente para a conversa com o prospect no Instagram.</p></div>
+
+                    <div><i class="fas fa-paper-plane text-green-400 text-4xl mb-2"></i><h4 class="text-xl font-bold text-white">3. Enviar</h4><p class="text-gray-300">Você cola a mensagem e envia. A ação final é sempre sua.</p></div>
+                </div>
+                <p class="text-center text-xl text-green-200 mt-10 font-semibold">Este método garante 100% de segurança para sua conta, combinando a inteligência da IA com o seu controle humano.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTMENT AND CONTACT SECTION -->
+    <section class="section-container">
+        <div class="z-10 text-center max-w-5xl px-4">
+            <div class="pricing-card p-10 rounded-xl pulse-glow mb-12">
+                <div class="mb-8">
+                    <i class="fas fa-tag text-green-400 text-5xl mb-6"></i>
+                    <h2 class="text-4xl font-bold text-white mb-4">Método de Lançamento</h2>
+                    <p class="text-xl text-gray-300 leading-relaxed mb-6">Após o desenvolvimento da ferramenta, o uso é vinculado a uma assinatura na minha plataforma:<br>https://wolf.dev.br</p>
+                </div>
+
+            </div>
+
+            <div class="thank-you-card p-10 rounded-xl">
+                <h2 class="text-4xl font-bold mb-4 title-gradient" style="padding-bottom: 10px;">Obrigado!</h2>
+				<img src="https://wolf.dev.br/assets/images/wolfdev5.png" alt="Wolf Dev Logo" class="w-20 h-20 mx-auto glow-effect rounded-full logo">
+                <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mt-8">
+                    <div class="contact-item p-4 rounded-lg"><div class="mb-2"><i class="fas fa-phone text-green-400 text-2xl"></i></div><h4 class="text-lg font-bold text-white">Telefone</h4><p class="text-md text-gray-300 font-mono">(41) 9 9239-7492</p></div>
+                    <div class="contact-item p-4 rounded-lg"><div class="mb-2"><i class="fas fa-envelope text-blue-400 text-2xl"></i></div><h4 class="text-lg font-bold text-white">E-mail</h4><p class="text-md text-gray-300 font-mono">bardwolf@gmail.com</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
